@@ -82,7 +82,7 @@ function joinClub(){
 //update member count
     document.getElementById("clubMembers").innerText = newMember.toLocaleString() + " members";
     document.getElementById("modalOverlay") .classList.add("active");
-    joinbtn.innerText = "✓ Joined!";
+    joinbtn.innerText = "Joined!";
     joinbtn.classList.add("joined");
 
     joined = true;
