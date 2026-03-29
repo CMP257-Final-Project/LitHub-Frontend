@@ -655,7 +655,7 @@ document.addEventListener('click', function (event) {
             icon.classList.add('far');
         }
 
-        showToast("Removed from wishlist")
+        showToast("Removed from wishlist!")
 
     }
     else {
