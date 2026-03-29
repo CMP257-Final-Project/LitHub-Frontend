@@ -609,13 +609,68 @@ if (document.getElementById('filterSidebar')) {
 
 
     function applyFiltersAndDisplay() {
-        let selectedFilters = getSelectedFilters();          // Step 1: which checkboxes are ticked?
-        let filteredBooks = filterBooks(selectedFilters);  // Step 2: which books match?
-        showFilteredResults(filteredBooks, selectedFilters); // Step 3: show results grid
-        showActiveTags(selectedFilters);                     // Step 4: show tags in filter bar
-        closeSidebar();                                      // Step 5: close the sidebar
+        let selectedFilters = getSelectedFilters();          
+        let filteredBooks = filterBooks(selectedFilters);  
+        showFilteredResults(filteredBooks, selectedFilters); 
+        showActiveTags(selectedFilters);                     
+        closeSidebar();                                      
     }
 
     filterApplyBtn.addEventListener('click', applyFiltersAndDisplay);
 }
+
+function showToast(message) {
+
+    let oldToast = document.querySelector('.toast-notification');
+
+    if (oldToast) {
+        oldToast.remove();
+    }
+
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.innerHTML = message;
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+
+document.addEventListener('click', function (event) {
+
+    let saveButton = event.target.closest('.btn-save');
+    let icon = saveButton.querySelector('i');
+
+
+    if (saveButton) {
+
+
+        if(saveButton.classList.contains('saved')) {
+            saveButton.classList.remove('saved');
+        if (icon) {
+            icon.classList.remove('fas');
+            icon.classList.add('far');
+        }
+
+        showToast("Removed from wishlist")
+
+    }
+    else {
+        saveButton.classList.add('saved');
+        if(icon){
+            icon.classList.remove('far');
+            icon.classList.add('fas');
+        }
+
+        showToast("Saved to wishlist!");
+
+    }
+
+    }
+
+});
+
 
