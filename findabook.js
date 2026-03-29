@@ -170,6 +170,32 @@ if (document.getElementById('filterSidebar')) {
     filterCloseBtn.addEventListener('click', closeSidebar);
     filterOverlay.addEventListener('click', closeSidebar);
 
+    // Auto-applying the filter from homepage
+    document.addEventListener("DOMContentLoaded", function () {
+        function applyGenreFromURL() {
+
+            let params = new URLSearchParams(window.location.search);
+            let genreFromURL = params.get("genre");
+
+            if (genreFromURL) {
+
+                // find matching checkbox
+                let checkbox = document.querySelector(
+                    'input[data-filter="genre"][value="' + genreFromURL + '"]'
+                );
+
+                if (checkbox) {
+                    checkbox.checked = true;
+                    applyFiltersAndDisplay();
+                }
+            }
+        }
+        // run it on load
+        applyGenreFromURL();
+
+    });
+
+
     // Close sidebar when Escape key is pressed
     function handleEscapeKey(event) {
         if (event.key === 'Escape') {
@@ -307,7 +333,7 @@ if (document.getElementById('filterSidebar')) {
             rating: 4.2,
             year: 2018
         },
-    
+
 
     ];
 
@@ -609,11 +635,11 @@ if (document.getElementById('filterSidebar')) {
 
 
     function applyFiltersAndDisplay() {
-        let selectedFilters = getSelectedFilters();          
-        let filteredBooks = filterBooks(selectedFilters);  
-        showFilteredResults(filteredBooks, selectedFilters); 
-        showActiveTags(selectedFilters);                     
-        closeSidebar();                                      
+        let selectedFilters = getSelectedFilters();
+        let filteredBooks = filterBooks(selectedFilters);
+        showFilteredResults(filteredBooks, selectedFilters);
+        showActiveTags(selectedFilters);
+        closeSidebar();
     }
 
     filterApplyBtn.addEventListener('click', applyFiltersAndDisplay);
@@ -648,26 +674,26 @@ document.addEventListener('click', function (event) {
     if (saveButton) {
 
 
-        if(saveButton.classList.contains('saved')) {
+        if (saveButton.classList.contains('saved')) {
             saveButton.classList.remove('saved');
-        if (icon) {
-            icon.classList.remove('fas');
-            icon.classList.add('far');
+            if (icon) {
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+            }
+
+            showToast("Removed from wishlist!")
+
         }
+        else {
+            saveButton.classList.add('saved');
+            if (icon) {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+            }
 
-        showToast("Removed from wishlist!")
+            showToast("Saved to wishlist!");
 
-    }
-    else {
-        saveButton.classList.add('saved');
-        if(icon){
-            icon.classList.remove('far');
-            icon.classList.add('fas');
         }
-
-        showToast("Saved to wishlist!");
-
-    }
 
     }
 
