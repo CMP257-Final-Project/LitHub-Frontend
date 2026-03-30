@@ -27,7 +27,7 @@
                     <a class="nav-link active text-white" aria-current="page" href="findabook.html">FIND A BOOK</a>
                     <a class="nav-link active text-white" aria-current="page" href="bloghomepage.html">BLOGS</a>
                     <a class="nav-link active text-white" aria-current="page" href="Signuppage.html">SIGN IN</a>
-                    <button class="btn " type="button">SIGN UP</button>
+                    <button class="btn " type="button" onclick="window.location.href='Signuppage.html'">SIGN UP</button>
 
                 </div>
             </div>
@@ -66,16 +66,20 @@
             <h1><b>Browse Endless Categories!</b></h1>
             <div class="row row-cols-2 row-cols-lg-4 row-cols-md-3 g-2 g-lg-3">
                 <div class="col">
-                    <div class="p-3"><img src="Img/Fantasy.png" alt="Fantasy"></div>
+                    <div class="p-3"><img src="Img/Fantasy.png" alt="Fantasy" class="category-img" data-genre="Fantasy">
+                    </div>
                 </div>
                 <div class="col">
-                    <div class="p-3"><img src="Img/Mystery.png" alt="Mystery"></div>
+                    <div class="p-3"><img src="Img/Mystery.png" alt="Mystery" class="category-img" data-genre="Mystery">
+                    </div>
                 </div>
                 <div class="col">
-                    <div class="p-3"><img src="Img/Action.png" alt="Action & Adventure"></div>
+                    <div class="p-3"><img src="Img/Action.png" alt="Action & Adventure" class="category-img"
+                            data-genre="Thriller"></div>
                 </div>
                 <div class="col">
-                    <div class="p-3"><img src="Img/Romance.png" alt="Romance"></div>
+                    <div class="p-3"><img src="Img/Romance.png" alt="Romance" class="category-img" data-genre="Romance">
+                    </div>
                 </div>
                 <div class="col">
                     <div class="p-3"><img src="Img/Horror.png" alt="Horror"></div>
@@ -87,13 +91,15 @@
                     <div class="p-3"><img src="Img/Young.png" alt="Young Adult"></div>
                 </div>
                 <div class="col">
-                    <div class="p-3"><img src="Img/Non-fic.png" alt="Non-Fiction"></div>
+                    <div class="p-3"><img src="Img/Non-fic.png" alt="Non-Fiction" class="category-img"
+                            data-genre="Non-Fiction"></div>
                 </div>
                 <div class="col">
                     <div class="p-3"><img src="Img/LiteraryFic.png" alt="Literary Fiction"></div>
                 </div>
                 <div class="col">
-                    <div class="p-3"><img src="Img/SciFic.png" alt="Science Fiction"></div>
+                    <div class="p-3"><img src="Img/SciFic.png" alt="Science Fiction" class="category-img"
+                            data-genre="Sci-Fi"></div>
                 </div>
                 <div class="col">
                     <div class="p-3"><img src="Img/Historical.png" alt="Historical Fiction"></div>
@@ -241,7 +247,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="HomePage.js"></script>
     <script src="owl.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>

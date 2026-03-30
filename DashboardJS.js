@@ -373,6 +373,26 @@ function showToast(message) {
 }
 
 
+// Logout     
+    function logout(e) {
+    e.preventDefault();
+    if (confirm('Are you sure you want to log out?')) {
+         showToast('Logged out successfully! Redirecting to Home page...');
+        setTimeout(() => {
+            window.location.href = 'HomePage.html';
+        }, 1000);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', logout);
+    }
+});
+
+
+
 //Initializing the dashboard
 function initialize() {
     updateStats();
