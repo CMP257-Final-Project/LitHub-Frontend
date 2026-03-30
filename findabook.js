@@ -195,16 +195,15 @@ if (document.getElementById('filterSidebar')) {
     let filterClearBtn = document.getElementById('filterClearBtn');
     let filterApplyBtn = document.getElementById('filterApplyBtn');
     let activeTagsContainer = document.getElementById('filterActiveTags');
-    let pageContent = document.getElementById('pageContent');
+    let pageContent = document.getElementById('mainContent');
 
     // Open the sidebar
     function openSidebar() {
         filterSidebar.classList.add('open');
         filterOverlay.classList.add('active');
         filterToggleBtn.classList.add('active');
-        document.body.style.overflow = 'hidden'; // stop page scrolling
+        document.body.style.overflow = 'hidden'; 
 
-        // Only shift content on desktop screens
         if (window.innerWidth > 768) {
             pageContent.classList.add('shifted');
         }
@@ -219,7 +218,6 @@ if (document.getElementById('filterSidebar')) {
         document.body.style.overflow = ''; // restore scrolling
     }
 
-    // Toggle — open if closed, close if open
     function toggleSidebar() {
         if (filterSidebar.classList.contains('open')) {
             closeSidebar();
@@ -232,7 +230,6 @@ if (document.getElementById('filterSidebar')) {
     filterCloseBtn.addEventListener('click', closeSidebar);
     filterOverlay.addEventListener('click', closeSidebar);
 
-    // Auto-applying the filter from homepage
     document.addEventListener("DOMContentLoaded", function () {
         function applyGenreFromURL() {
 
@@ -252,7 +249,6 @@ if (document.getElementById('filterSidebar')) {
                 }
             }
         }
-        // run it on load
         applyGenreFromURL();
 
     });
@@ -267,24 +263,19 @@ if (document.getElementById('filterSidebar')) {
     document.addEventListener('keydown', handleEscapeKey);
 
 
-    // S COLLAPSIBLE FILTER GROUPS
-    // Each filter section  can expand/collapse when its header button is clicked.
-
     let groupToggleButtons = document.querySelectorAll('.filter-group-toggle');
 
     function setupGroupToggles() {
         for (let i = 0; i < groupToggleButtons.length; i++) {
 
             groupToggleButtons[i].addEventListener('click', function () {
-                // data-target="genreList" etc. is written in the HTML button
                 // This tells us which list div to open/close
                 let targetId = this.dataset.target;
                 let targetList = document.getElementById(targetId);
 
-                // Toggle: if open → close, if closed → open
                 if (targetList.classList.contains('open')) {
                     targetList.classList.remove('open');
-                    this.classList.add('collapsed');    // rotates the chevron arrow
+                    this.classList.add('collapsed');    
                 } else {
                     targetList.classList.add('open');
                     this.classList.remove('collapsed');
@@ -400,31 +391,24 @@ if (document.getElementById('filterSidebar')) {
     ];
 
 
-    // READ SELECTED FILTERS
-    // Reads all ticked checkboxes and returns them as an object.
 
     function getSelectedFilters() {
 
-        // This object will hold all the selected filter values
         let selectedFilters = {
             genre: [],
             rating: [],
             year: []
         };
 
-        // Get every checkbox in the sidebar
         let allCheckboxes = document.querySelectorAll('.filter-checkbox input[type="checkbox"]');
 
-        // Loop through each checkbox
         for (let i = 0; i < allCheckboxes.length; i++) {
             let checkbox = allCheckboxes[i];
 
-            // Only process checked ones
             if (checkbox.checked === true) {
-                let filterType = checkbox.dataset.filter; // "genre", "rating", or "year"
-                let filterValue = checkbox.value;         // e.g. "Fiction", "4", "2026"
+                let filterType = checkbox.dataset.filter; 
+                let filterValue = checkbox.value;         
 
-                // Push the value into the matching array
                 selectedFilters[filterType].push(filterValue);
             }
         }
@@ -434,9 +418,7 @@ if (document.getElementById('filterSidebar')) {
 
 
     // FILTER THE BOOKS
-    // Compares each book against selected filters.
-    // Returns only books that match all active filters.
-
+    
     function filterBooks(selectedFilters) {
 
         let matchingBooks = [];
@@ -517,15 +499,13 @@ if (document.getElementById('filterSidebar')) {
 
 
     // SSHOW FILTERED RESULTS
-    // Hides the normal page content (Trending, Most Viewed etc.) and shows a clean CSS grid of matching book cards instead.
 
-    // Create the results container once — reuse it every time
     let resultsSection = document.createElement('div');
     resultsSection.id = 'filterResults';
-    resultsSection.style.display = 'none'; // hidden until filters are applied
-    document.querySelector('.filter-bar').after(resultsSection); // insert after filter bar
+    resultsSection.style.display = 'none'; 
+    document.querySelector('.filter-bar').after(resultsSection); 
 
-    // Hide Trending, Most Viewed, Mood sections (not the hero)
+    // Hide Trending, Most Viewed, Mood sections 
     function hideNormalContent() {
         pageContent.style.display = 'none';
     }
@@ -534,7 +514,7 @@ if (document.getElementById('filterSidebar')) {
     function showNormalContent() {
         pageContent.style.display = 'block';
         resultsSection.style.display = 'none';
-        resultsSection.innerHTML = ''; // wipe results
+        resultsSection.innerHTML = ''; 
     }
 
     // Build and show the results grid
@@ -542,8 +522,6 @@ if (document.getElementById('filterSidebar')) {
         hideNormalContent();
         resultsSection.style.display = 'block';
 
-        // Build a readable summary of what filters are active
-        // e.g. "Fiction, Romance, 4+ stars"
         let allSelected = selectedFilters.genre
             .concat(selectedFilters.rating)
             .concat(selectedFilters.year);
@@ -553,7 +531,6 @@ if (document.getElementById('filterSidebar')) {
             tagText = allSelected.join(', ');
         }
 
-        // Build the header + empty grid container
         resultsSection.innerHTML =
             '<div class="results-header">' +
             '<p class="results-count">Showing <strong>' + booksToShow.length + '</strong> results for: ' + tagText + '</p>' +
@@ -561,7 +538,6 @@ if (document.getElementById('filterSidebar')) {
             '</div>' +
             '<div class="results-grid" id="resultsGrid"></div>';
 
-        // Back button → restore normal view and clear filters
         document.getElementById('resultsBackBtn').addEventListener('click', function () {
             showNormalContent();
             resetAllFilters();
@@ -608,7 +584,6 @@ if (document.getElementById('filterSidebar')) {
             btnWrapper.appendChild(saveBtn);
 
 
-            // Assemble the card
             card.appendChild(image);
             card.appendChild(title);
             card.appendChild(btnWrapper);
@@ -618,7 +593,6 @@ if (document.getElementById('filterSidebar')) {
 
 
     // SHOW ACTIVE FILTER TAGS
-    // Shows small removable tags in the filter bar so the user can see and remove active filters easily.
 
     function showActiveTags(selectedFilters) {
         activeTagsContainer.innerHTML = ''; // clear old tags
@@ -646,7 +620,6 @@ if (document.getElementById('filterSidebar')) {
                 removeBtn.dataset.value = tagValue;
                 removeBtn.dataset.filter = filterType;
 
-                // Clicking  unchecks that filter and re-runs everything
                 removeBtn.addEventListener('click', function () {
                     let checkboxToUncheck = document.querySelector(
                         'input[data-filter="' + this.dataset.filter + '"][value="' + this.dataset.value + '"]'
@@ -662,7 +635,6 @@ if (document.getElementById('filterSidebar')) {
             }
         }
 
-        // Show Clear All button only if there are active tags
         if (totalTags > 0) {
             filterClearBtn.style.display = 'block';
         } else {

@@ -152,7 +152,6 @@ body.theme-laugh-out-loud {
   background: var(--accent);
   min-height: 100vh;
   padding: 4rem 5%;
-  /* smooth colour transition when theme changes */
   transition: background 0.4s ease;
 }
 
@@ -169,7 +168,6 @@ body.theme-laugh-out-loud {
   padding-left: 1rem;
 }
  
-/* For dark theme the heading text should be light */
 body.theme-dark-twisted .mood-section-header h2,
 body.theme-dark-twisted .mood-book-title,
 body.theme-dark-twisted .mood-club-name {
@@ -422,6 +420,12 @@ body.theme-dark-twisted .mood-club-desc {
   .mood-books-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.2rem; }
   .mood-book-cover { height: 200px; }
   .mood-clubs-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .dbook-card {
+    flex: 0 0 150px;
+  }
 }
  
 

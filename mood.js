@@ -3,7 +3,6 @@ const url = new URLSearchParams(window.location.search);
 //window.location.search - this returns the entire string
 const mood = url.get("mood");
 
-// now we create a dictioornaty (obj) to store all the moods
 
 const moods = {
 
@@ -133,7 +132,7 @@ const moods = {
 
     booksSectionTitle: "Laugh-Out-Loud Reads",
     booksSectionSub: "Because life’s too short to be serious",
-    BookClubsTitle: "Comedy Book Club",
+    BookClubsTitle: "Comedy Book Clubs",
     BookClubsSub: "Share laughs, memes & favorite moments",
 
     books: [
@@ -163,7 +162,7 @@ const moods = {
 
     booksSectionTitle: "Heartbreaking Reads",
     booksSectionSub: "Stories that hit you right in the feels",
-    BookClubsTitle: "Emotional Readers Club",
+    BookClubsTitle: "Emotional Readers Clubs",
     BookClubsSub: "Find your reading community",
     books: [
       "Img/fgb1.jpg",
