@@ -28,7 +28,7 @@ if (document.querySelector('.bookSwiper')) {
 
 
 
-// STRENDING NOW SLIDER
+// TRENDING NOW SLIDER
 
 let tnTrack = document.getElementById('tnTrack');
 let tnPrevButton = document.getElementById('Prev1');
@@ -76,6 +76,68 @@ if (tnTrack && tnPrevButton && tnNextButton) {
 
         });
     }
+}
+
+// Discover books buttons
+
+let mvTrackDiscover = document.getElementById('mvTrackDiscover');
+let PrevDiscoverButton = document.getElementById('PrevDiscover');
+let NextDiscoverButton = document.getElementById('NextDiscover');
+let dbOverflow = document.getElementById('db-overflow');
+
+if (mvTrackDiscover && PrevDiscoverButton && NextDiscoverButton && dbOverflow) {
+    let dbCurrentIndex = 0;
+    let dbTotalCards = mvTrackDiscover.children.length; // total cards = 4
+    let containerWidth = dbOverflow.offsetWidth;
+    let cardWidth = mvTrackDiscover.children[0].offsetWidth + 12;
+    let dbVisibleCards = Math.floor(containerWidth / cardWidth); // there are onlt 4 cards
+    let dbMaxIndex = Math.max(0, dbTotalCards - dbVisibleCards);
+
+    window.addEventListener('resize', function () {
+        containerWidth = document.getElementById('db-overflow').offsetWidth;
+        cardWidth = mvTrackDiscover.children[0].offsetWidth + 12;
+
+        dbVisibleCards = Math.floor(containerWidth / cardWidth);
+        dbMaxIndex = Math.max(0, dbTotalCards - dbVisibleCards);
+        dbCurrentIndex = Math.min(dbCurrentIndex, dbMaxIndex);
+        moveDbSlider(dbCurrentIndex);
+    });
+
+
+    function moveDbSlider(index) {
+        if (index > dbMaxIndex) index = dbMaxIndex;
+        if (index < 0) index = 0;
+
+        dbCurrentIndex = index;
+
+        let cardWidth = mvTrackDiscover.children[0].offsetWidth + 12;
+        mvTrackDiscover.style.transform =
+            'translateX(-' + (index * cardWidth) + 'px)';
+    }
+
+    function dbNextClicked() {
+        if (dbCurrentIndex < dbMaxIndex) {
+            dbCurrentIndex = dbCurrentIndex + 1;
+            moveDbSlider(dbCurrentIndex);
+        }
+    }
+
+    function dbPrevClicked() {
+        if (dbCurrentIndex > 0) {
+            dbCurrentIndex = dbCurrentIndex - 1;
+            moveDbSlider(dbCurrentIndex);
+        }
+    }
+
+    NextDiscoverButton.addEventListener('click', dbNextClicked);
+    PrevDiscoverButton.addEventListener('click', dbPrevClicked);
+
+    if (dbOverflow) {
+        dbOverflow.addEventListener('wheel', function (e) {
+            e.preventDefault(); dbOverflow.scrollLeft += e.deltaX || e.deltaY;
+        });
+    }
+
 }
 
 
@@ -668,10 +730,11 @@ function showToast(message) {
 document.addEventListener('click', function (event) {
 
     let saveButton = event.target.closest('.btn-save');
-    let icon = saveButton.querySelector('i');
 
 
     if (saveButton) {
+        let icon = saveButton.querySelector('i');
+
 
 
         if (saveButton.classList.contains('saved')) {
