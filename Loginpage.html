@@ -10,70 +10,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="Signuplogin.css">
-    <style>
-        .login-row {
-            align-items: center !important;
-        }
-        .login-card {
-            height: auto !important;
-        }
-        .login-image-card {
-            height: 100%;
-        }
-        .error-message {
-            font-size: 0.8rem;
-            margin-top: 0.25rem;
-        }
-    </style>
 </head>
 
 <body class="instrument-serif-regular">
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <i class="fa fa-book-open" aria-hidden="true"></i>
-            <a class="text-white title" href="#">Lit Hub</a>
+            <a class="text-white title quintessential-regular" href="#">Lit Hub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link active text-white" aria-current="page" href="HomePage.html">ABOUT</a>
-                    <a class="nav-link active text-white" aria-current="page" href="findabook.html">FIND A BOOK</a>
-                    <a class="nav-link active text-white" aria-current="page" href="bloghomepage.html">BLOGS</a>
-                     <a class="nav-link active text-white" aria-current="page" href="Signuppage.html">SIGN UP</a>
+                    <a class="nav-link active text-white" aria-current="page" href="#">ABOUT</a>
+                    <a class="nav-link active text-white" aria-current="page" href="#">FIND A BOOK</a>
+                    <a class="nav-link active text-white" aria-current="page" href="#">BLOGS</a>
                 </div>
             </div>
         </div>
-    </nav><br>
+    </nav>
 
-    <div class="container" style="max-width: 1050px;">
-        <div class="row g-4 align-items-stretch login-row">
+    <div class="auth-container">
+        <div class="row g-0 auth-card-wrapper">
             <div class="col-md-6 d-flex">
-                <div class="card login-card w-100">
-                    <div class="card-header">
-                        <h4>Login</h4>
-                    </div>
-                    <div class="card-body">
-                        <form id="loginForm">
-                            <div class="mb-3">
-                                <label for="inputEmailUser" class="form-label">Email or Username</label>
-                                <input type="text" class="form-control" id="inputEmailUser" placeholder="Enter email or username">
-                                <div id="emailError" class="error-message text-danger"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputPassword" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Enter password">
-                                <div id="passwordError" class="error-message text-danger"></div>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Log In</button>
-                        </form>
-                    </div>
+                <div class="auth-image-side w-100">
+                    <img src="img/lib2.jpg" alt="Literary inspiration">
                 </div>
             </div>
-            <div class="col-md-5 d-flex">
-                <div class="card h-100 overflow-hidden border-0 shadow-sm login-image-card w-100">
-                    <img src="img/lib2.jpg" alt="Literary inspiration" class="img-fluid h-100 w-100 object-fit-cover" style="object-fit: cover; min-height: 100%;">
+            <div class="col-md-6 d-flex">
+                <div class="auth-form-side w-100">
+                    <div class="card-header-custom">
+                        <h4>Login</h4>
+                        <p>Welcome back to Lit Hub</p>
+                    </div>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="inputEmailUser" class="form-label">Email or Username</label>
+                            <input type="text" class="form-control" id="inputEmailUser" placeholder="Enter email or username">
+                            <div id="emailError" class="error-message text-danger"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Enter password">
+                            <div id="passwordError" class="error-message text-danger"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Log In</button>
+                    </form>
+                    <div class="auth-footer-note">
+                        Don't have an account? <a href="#">Sign Up</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,7 +70,6 @@
             if (value.trim() === "") {
                 return "Email or Username is required";
             }
-            
             if (value.includes("@")) {
                 let emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
                 if (!emailRegex.test(value)) {
@@ -152,7 +137,6 @@
             
             if (!emailError && !passwordError) {
                 alert("Login successful! Welcome back to Lit Hub!");
-                window.location.href = "Dashboard.html";
                 this.reset();
                 document.querySelectorAll(".form-control").forEach(input => {
                     input.classList.remove("is-valid", "is-invalid");
