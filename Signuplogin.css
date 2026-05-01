@@ -28,6 +28,9 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
 }
 
 .quintessential-regular {
@@ -44,7 +47,7 @@ body {
     color: #ffffff;
     font-weight: bold;
     font-size: 20px;
-    background: 785b37d2;
+    background: #785b37;
     padding: 10px 20px 10px 20px;
     border: solid #000000 2px;
     text-decoration: none;
@@ -53,11 +56,11 @@ body {
 .btn:hover {
     color: white;
     background: #3E2C23;
-    background-image: -webkit-linear-gradient(top, #3E2C23, #4e3b23d2);
-    background-image: -moz-linear-gradient(top, #3E2C23, #4e3b23d2);
-    background-image: -ms-linear-gradient(top, #3E2C23, #4e3b23d2);
-    background-image: -o-linear-gradient(top, #3E2C23, #4e3b23d2);
-    background-image: linear-gradient(to bottom, #3E2C23, #4e3b23d2);
+    background-image: -webkit-linear-gradient(top, #3E2C23, #4e3b23);
+    background-image: -moz-linear-gradient(top, #3E2C23, #4e3b23);
+    background-image: -ms-linear-gradient(top, #3E2C23, #4e3b23);
+    background-image: -o-linear-gradient(top, #3E2C23, #4e3b23);
+    background-image: linear-gradient(to bottom, #3E2C23, #4e3b23);
     text-decoration: none;
 }
 
@@ -67,118 +70,188 @@ body {
 }
 
 .instrument-serif-regular {
-  font-family: "Instrument Serif", serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-.container.smaller-container {
-    max-width: 800px;
-    margin: 0 auto;
+.auth-container {
+    width: 100vw;
+    height: calc(100vh - 80px);
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
 }
 
-.row.match-height {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.row.match-height > [class*='col-'] {
-    display: flex;
-    flex-direction: column;
-}
-
-.card {
-    border-radius: 28px !important;
+.auth-card-wrapper {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 0;
     overflow: hidden;
+}
+
+.auth-image-side {
     height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
-.card.h-100, .card.h-100.overflow-hidden {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    border-radius: 28px !important;
-}
-
-.card.h-100 .img-fluid {
-    flex: 1;
+.auth-image-side img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    min-height: 100%;
 }
 
-.card-header {
-    text-align: center;
-    padding: 1rem 1rem 0.5rem 1rem;
+.auth-form-side {
     background: white;
-    border-top-left-radius: 28px !important;
-    border-top-right-radius: 28px !important;
-}
-
-.card-header h4 {
-    margin-bottom: 0;
-    font-size: 1.5rem;
-}
-
-.card-body {
-    text-align: center;
-    padding: 1rem 1.5rem 1.5rem 1.5rem;
-    background: white;
-    border-bottom-left-radius: 28px !important;
-    border-bottom-right-radius: 28px !important;
-    flex: 1;
-}
-
-.card-body form {
-    text-align: center;
-    height: 100%;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
-.mb-3 {
-    margin-bottom: 0.75rem !important;
+.auth-form-side .card-header-custom {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f0e2c5;
+    padding-bottom: 0.5rem;
+    width: 100%;
+}
+
+.auth-form-side .card-header-custom h4 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #3a2a1f;
+    margin-bottom: 0.25rem;
+    font-family: "Quintessential", serif;
     text-align: center;
 }
 
-.form-label {
+.auth-form-side .card-header-custom p {
+    color: #6c4f2e;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    text-align: center;
+    font-family: "Instrument Serif", serif;
+}
+
+.auth-form-side form {
+    width: 80%;
+    max-width: 400px;
+}
+
+.auth-form-side .form-label {
+    text-align: left;
+    font-weight: 600;
+    color: #4e3b23;
     display: block;
+    font-family: "Instrument Serif", serif;
+}
+
+.auth-form-side .form-control {
+    text-align: left;
+    border-radius: 48px;
+    padding: 0.7rem 1rem;
+    border: 1px solid #e2d5c0;
+    background-color: #fefaf5;
+    font-family: "Instrument Serif", serif;
+}
+
+.auth-form-side .form-control:focus {
+    border-color: #b48c48;
+    box-shadow: 0 0 0 0.2rem rgba(180, 140, 72, 0.2);
+}
+
+.auth-form-side .error-message {
+    text-align: left;
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+}
+
+.auth-form-side .btn-primary {
+    margin-top: 0.8rem;
+    padding: 0.7rem;
+    font-size: 1rem;
+    width: 100%;
+    background: #785b37;
+    border: solid #000000 2px;
+}
+
+.auth-form-side .btn-primary:hover {
+    background: #3E2C23;
+    background-image: -webkit-linear-gradient(top, #3E2C23, #4e3b23);
+    background-image: -moz-linear-gradient(top, #3E2C23, #4e3b23);
+    background-image: -ms-linear-gradient(top, #3E2C23, #4e3b23);
+    background-image: -o-linear-gradient(top, #3E2C23, #4e3b23);
+    background-image: linear-gradient(to bottom, #3E2C23, #4e3b23);
+}
+
+.auth-footer-note {
     text-align: center;
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: #7d6236;
+    font-family: "Instrument Serif", serif;
 }
 
-.form-control {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
-    text-align: center;
+.auth-footer-note a {
+    color: #4e3b23;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-.btn-primary {
-    padding: 0.5rem;
-    font-size: 0.9rem;
-    margin-top: 0.25rem;
-    background-color: #8b6b3c;
-    border: none;
-    border-radius: 60px;
+.auth-footer-note a:hover {
+    text-decoration: underline;
 }
 
-.btn-primary:hover {
-    background-color: #6e4f2a;
-}
-
-.overflow-hidden {
-    min-height: 0;
-    border-radius: 28px !important;
-}
-
-input[type="date"] {
-    text-align: center;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    margin-left: auto;
-    margin-right: auto;
+.row.g-0 {
+    margin: 0;
+    height: 100%;
 }
 
 .col-md-6 {
+    height: 100%;
+    padding: 0;
+}
+
+.d-flex {
     display: flex;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .auth-container {
+        height: auto;
+        position: relative;
+        top: 0;
+        min-height: calc(100vh - 80px);
+    }
+    .auth-image-side {
+        height: 250px;
+    }
+    .auth-form-side {
+        padding: 1.8rem;
+    }
+    .auth-form-side form {
+        width: 95%;
+    }
+    .navbar-nav {
+        gap: 1rem;
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+    .col-md-6 {
+        height: auto;
+    }
 }
