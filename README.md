@@ -64,34 +64,6 @@ Frontend UI for LitHub - a book tracking and book club web application. Built wi
 
 ---
 
-##  Project Structure
-
-```
-lithub-frontend/
-├── src/
-│   ├── pages/
-│   │   ├── dashboard.html
-│   │   ├── findabook.html
-│   │   ├── login.html
-│   │   └── signup.html
-│   ├── css/
-│   │   ├── styles.css
-│   │   └── dashboard.css
-│   ├── js/
-│   │   ├── dashboard.js
-│   │   ├── auth.js
-│   │   └── findabook.js
-│   └── assets/
-│       ├── images/
-│       └── fonts/
-├── index.html
-├── package.json
-├── README.md
-└── LICENSE
-```
-
----
-
 ##  API Integration
 
 This frontend consumes the [LitHub Backend API](https://github.com/CMP257-Final-Project/LitHubBackend).
