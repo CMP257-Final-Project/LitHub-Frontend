@@ -122,5 +122,5 @@ fetch("/api/book-action", {
 
 ##  Related Repositories
 
-- **Backend:** [lithub-backend](https://github.com/CMP257-Final-Project/LitHubBackend)
-- **Full Project:** [lithub](https://github.com/CMP257-Final-Project/LitHub-Final-Implementation)
+- **Backend:** [LitHub-Backend](https://github.com/CMP257-Final-Project/LitHubBackend)
+- **Full Project:** [LitHub](https://github.com/CMP257-Final-Project/LitHub-Final-Implementation)
